@@ -5,9 +5,11 @@ namespace App\Filament\Resources\Categories\Tables;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
+use Filament\Actions\ExportAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use App\Filament\Exports\CategoryExporter;
 
 class CategoriesTable
 {
@@ -46,6 +48,9 @@ class CategoriesTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+            ])->headerActions([
+                ExportAction::make()
+                    ->exporter(CategoryExporter::class),
             ]);
     }
 }

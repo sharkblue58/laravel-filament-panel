@@ -5,7 +5,9 @@ namespace App\Filament\Resources\Tags\Tables;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
+use Filament\Actions\ExportAction;
 use Filament\Tables\Filters\Filter;
+use App\Filament\Exports\TagExporter;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
@@ -61,6 +63,9 @@ class TagsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
+            ])->headerActions([
+                ExportAction::make()
+                    ->exporter(TagExporter::class),
             ]);
     }
 }
