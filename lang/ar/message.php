@@ -41,5 +41,15 @@ return [
     'user_stat_description' => 'إجمالي المستخدمين المسجلين',
     'order_stat_description' => 'إجمالي طلبات العملاء',
     'product_stat_description' => 'إجمالي المنتجات المدرجة',
+    'countries' => 'الدول',
+    'country' => 'الدولة',
+    'cities' => 'المدن',
+    'city' => 'المدينة',
+    'location_management' => 'إدارة الموقع',
+    'code' => 'الكود',
+    'description' => 'الوصف',
+    'category_information' => 'معلومات الفئة',
+    
+
 
 ];

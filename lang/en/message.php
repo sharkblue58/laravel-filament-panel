@@ -41,4 +41,12 @@ return [
     'user_stat_description' => 'Total registered users',
     'order_stat_description' => 'Total customer orders',
     'product_stat_description' => 'Total products listed',
+    'countries' => 'Countries',
+    'country' => 'Country',
+    'cities' => 'Cities',
+    'city' => 'City',
+    'location_management' => 'Location Management',
+    'code' => 'Code',
+    'description' => 'Description',
+    'category_information' => 'Category Information',
 ];

@@ -14,23 +14,21 @@ class CategoryForm
     {
         return $schema
             ->components([
-                Section::make('Category Information')
-                    ->description('Enter the basic details of the category')
+                Section::make(__('message.category_information'))
+                    //->description('Enter the basic details of the category')
                     ->schema([
                         TextInput::make('name')
-                            ->label('Category Name')
+                            ->label(__('message.name'))
                             ->required()
                             ->maxLength(255)
-                            ->placeholder('Enter category name')
                             ->autofocus(),
 
                         Textarea::make('description')
-                            ->label('Description')
+                            ->label(__('message.description'))
                             ->nullable()
                             ->rows(3)
-                            ->placeholder('Enter a brief description of the category')
                             ->maxLength(500)
-                            ->helperText('Maximum 500 characters'),
+                            ,
                     ])
             ]);
     }
