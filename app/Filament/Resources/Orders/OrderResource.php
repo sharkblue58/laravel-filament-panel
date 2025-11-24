@@ -13,6 +13,7 @@ use App\Filament\Resources\Orders\Pages\ListOrders;
 use App\Filament\Resources\Orders\Pages\CreateOrder;
 use App\Filament\Resources\Orders\Schemas\OrderForm;
 use App\Filament\Resources\Orders\Tables\OrdersTable;
+use App\Filament\Resources\Orders\Pages\OrderInvoicePage;
 use App\Filament\Resources\Orders\RelationManagers\OrderItemsRelationManager;
 
 class OrderResource extends Resource
@@ -44,6 +45,7 @@ class OrderResource extends Resource
             'index' => ListOrders::route('/'),
             'create' => CreateOrder::route('/create'),
             'edit' => EditOrder::route('/{record}/edit'),
+            'invoice' =>OrderInvoicePage::route('/{record}/invoice'),
         ];
     }
 

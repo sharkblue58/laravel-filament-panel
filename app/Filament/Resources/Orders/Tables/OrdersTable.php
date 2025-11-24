@@ -6,13 +6,14 @@ use App\Enums\OrderStatus;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
 use Filament\Forms\Components\Select;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextInputColumn;
+use App\Filament\Resources\Orders\Pages\OrderInvoicePage;
 
 
 class OrdersTable
@@ -30,7 +31,7 @@ class OrdersTable
                     ->sortable(),
 
                 TextInputColumn::make('customer_name')
-                    ->rules(['required','string','max:255'])
+                    ->rules(['required', 'string', 'max:255'])
                     ->searchable(),
 
                 TextColumn::make('customer_email')
@@ -44,8 +45,7 @@ class OrdersTable
                                 $case->value => $case->label()
                             ])
                     )
-                 ->rules(['required'])
-                ,
+                    ->rules(['required']),
 
                 TextColumn::make('total')
                     ->label('Total')
@@ -68,6 +68,11 @@ class OrdersTable
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
+                Action::make('invoice')
+                    ->label('View Invoice')
+                    ->icon('heroicon-o-document-text')
+                    ->url(fn($record) => OrderInvoicePage::getUrl(['record' => $record]))
+                    ->openUrlInNewTab(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
