@@ -17,6 +17,7 @@ use Filament\Actions\DissociateAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Actions\DissociateBulkAction;
+use Filament\Tables\Columns\TextInputColumn;
 use Filament\Resources\RelationManagers\RelationManager;
 
 class OrderItemsRelationManager extends RelationManager
@@ -44,7 +45,7 @@ class OrderItemsRelationManager extends RelationManager
                         }
                     )
                     ->validationMessages([
-                        'unique' => 'This product is already in the order. Please update the quantity instead.',
+                        'unique' => __('message.order_items_unique'),
                     ])
                     ->required(),
 
@@ -74,9 +75,13 @@ class OrderItemsRelationManager extends RelationManager
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('quantity')
+                TextInputColumn::make('quantity')
                     ->label('Quantity')
-                    ->sortable(),
+                    ->rules(['required', 'numeric', 'min:1'])
+                    ->afterStateUpdated(function ($record, $state) {
+                        $record->update(['quantity' => $state]);
+                        $record->order->updateTotal();
+                    }),
 
                 TextColumn::make('price')
                     ->label('Price')

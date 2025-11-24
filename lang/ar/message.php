@@ -63,4 +63,6 @@ return [
     'product_quantity' => 'كمية المنتج',
     'product_total' => 'إجمالي المنتج',
 
+    'order_items_unique'=> 'هذا المنتج موجود في الطلب. يُرجى تحديث الكمية.'
+
 ];
