@@ -19,36 +19,35 @@ class ProductsTable
                 TextColumn::make('id')
                     ->label('ID')
                     ->sortable(),
-
                 TextColumn::make('name')
-                    ->label('Product Name')
+                    ->label('Name')
                     ->searchable()
                     ->sortable(),
-
                 TextColumn::make('category.name')
                     ->label('Category')
                     ->sortable()
                     ->searchable(),
-
-/*                 ImageColumn::make('image')
-                    ->label('Image')
-                    ->disk('public')
-                    ->square(), */
-
                 TextColumn::make('price')
                     ->label('Price')
                     ->money('USD', true)
+                    ->searchable()
                     ->sortable(),
-
                 TextColumn::make('created_at')
-                    ->label('Created')
-                    ->dateTime()
+                    ->label(__('message.created_at'))
+                    ->icon('heroicon-o-calendar')
+                    ->datetime('d/m/Y h:i A')
+                    ->sortable(),
+                TextColumn::make('updated_at')
+                    ->label(__('message.updated_at'))
+                    ->icon('heroicon-o-calendar')
+                    ->datetime('d/m/Y h:i A')
                     ->sortable(),
 
-                TextColumn::make('updated_at')
-                    ->label('Updated')
-                    ->dateTime()
-                    ->sortable(),
+
+                /*ImageColumn::make('image')
+                    ->label('Image')
+                    ->disk('public')
+                    ->square(), */
             ])
             ->filters([
                 //

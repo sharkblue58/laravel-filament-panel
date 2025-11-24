@@ -38,6 +38,7 @@ class TagsTable
                     ->datetime('d/m/Y h:i A'),
             ])
             ->filters([
+                Filter::make('name'),
                 Filter::make('created_at')
                     ->schema([
                         DatePicker::make('created_from'),
