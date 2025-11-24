@@ -56,4 +56,11 @@ return [
     'completed' => 'مكتمل',
     'cancelled' => 'ملغي',
 
+    'order_information' => 'معلومات الطلب',
+    'product_information' => 'معلومات المنتج',
+    'product_name' => 'اسم المنتج',
+    'product_price' => 'سعر المنتج',
+    'product_quantity' => 'كمية المنتج',
+    'product_total' => 'إجمالي المنتج',
+
 ];

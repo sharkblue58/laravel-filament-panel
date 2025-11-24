@@ -55,4 +55,15 @@ return [
     'shipped'   => 'Shipped',
     'completed' => 'Completed',
     'cancelled' => 'Cancelled',
+
+    'order_information' => 'Order Information',
+    'product_information' => 'Product Information',
+    'product_name' => 'Product Name',
+    'product_price' => 'Product Price',
+    'product_quantity' => 'Product Quantity',
+    'product_total' => 'Product Total',
+    'customer_name' => 'Customer Name',
+    'customer_email' => 'Customer Email',
+    'billing_address' => 'Billing Address',
+    'shipping_address' => 'Shipping Address',
 ];

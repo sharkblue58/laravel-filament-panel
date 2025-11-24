@@ -7,6 +7,7 @@ use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Forms\Components\Select;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
@@ -47,7 +48,7 @@ class OrdersTable
                 ,
 
                 TextColumn::make('total')
-                    ->label('Price')
+                    ->label('Total')
                     ->money('USD', true)
                     ->sortable(),
 
@@ -66,6 +67,7 @@ class OrdersTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

@@ -14,7 +14,7 @@ class OrderForm
     {
         return $schema
             ->components([
-                Section::make(__('message.admin_information'))
+                Section::make(__('message.order_information'))
                     ->schema([
                         Select::make('city_id')
                             ->relationship('city', 'name')
@@ -40,10 +40,6 @@ class OrderForm
 
                         TextInput::make('shipping_address'),
 
-                        TextInput::make('total')
-                            ->numeric()
-                            ->default(0)
-                            ->required(),
                     ])
             ]);
     }
