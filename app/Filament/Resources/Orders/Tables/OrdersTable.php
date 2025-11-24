@@ -6,8 +6,11 @@ use App\Enums\OrderStatus;
 use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
+use Filament\Support\Enums\Size;
+use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\ReplicateAction;
 use Filament\Forms\Components\Select;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
@@ -66,13 +69,21 @@ class OrdersTable
                 //
             ])
             ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
-                Action::make('invoice')
-                    ->label('Export Invoice')
-                    ->icon('heroicon-o-document-text')
-                    ->url(fn($record) => OrderInvoicePage::getUrl(['record' => $record]))
-                    ->openUrlInNewTab(),
+                ActionGroup::make([
+                    EditAction::make(),
+                    DeleteAction::make(),
+                    Action::make('invoice')
+                        ->label('Export Invoice')
+                        ->icon('heroicon-o-document-text')
+                        ->url(fn($record) => OrderInvoicePage::getUrl(['record' => $record]))
+                        ->openUrlInNewTab()
+                        ->color('info'),
+                ])
+                    ->label('More actions')
+                    ->icon('heroicon-m-ellipsis-vertical')
+                    ->size(Size::Small)
+                    ->color('primary')
+                    ->button()
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
