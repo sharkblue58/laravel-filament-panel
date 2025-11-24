@@ -69,7 +69,7 @@ class OrdersTable
                 EditAction::make(),
                 DeleteAction::make(),
                 Action::make('invoice')
-                    ->label('View Invoice')
+                    ->label('Export Invoice')
                     ->icon('heroicon-o-document-text')
                     ->url(fn($record) => OrderInvoicePage::getUrl(['record' => $record]))
                     ->openUrlInNewTab(),
