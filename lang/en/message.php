@@ -66,5 +66,8 @@ return [
     'customer_email' => 'Customer Email',
     'billing_address' => 'Billing Address',
     'shipping_address' => 'Shipping Address',
-    'order_items_unique'=> 'This product is already in the order. Please update the quantity instead.'
+    'order_items_unique'=> 'This product is already in the order. Please update the quantity instead.',
+    'setting' => 'Setting',
+    'settings' => 'Settings',
+    'general_settings' => 'General Settings',
 ];
