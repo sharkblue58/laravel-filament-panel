@@ -16,6 +16,11 @@ class RoleDistributionChart extends ChartWidget
         return __('message.role_distribution_chart');
     }
 
+       public static function canView(): bool
+    {
+        return auth()->user()?->hasRole('super admin') ?? false;
+    }
+
     protected function getData(): array
     {
         $roles = Role::pluck('name');

@@ -11,6 +11,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -52,6 +53,16 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasAnyRole(['admin', 'super admin']);
+        return $this->hasAnyRole(['admin','super admin']);
+    }
+
+    public function canBeImpersonated()
+    {
+        return !$this->hasRole('super admin');
+    }
+
+    public function canImpersonate()
+    {
+        return $this->hasRole('admin') || $this->hasRole('super admin');
     }
 }

@@ -15,6 +15,11 @@ class ProductsCreatedChart extends ChartWidget
         return __('message.products_created_chart');
     }
 
+    public static function canView(): bool
+    {
+        return auth()->user()?->hasRole('super admin') ?? false;
+    }
+
     protected function getData(): array
     {
         $year = now()->year;

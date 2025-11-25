@@ -13,6 +13,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Notifications\Notification;
+use STS\FilamentImpersonate\Actions\Impersonate;
 
 class AdminsTable
 {
@@ -45,6 +46,7 @@ class AdminsTable
                 //
             ])
             ->recordActions([
+                Impersonate::make(),
                 EditAction::make(),
                 ViewAction::make(),
                 DeleteAction::make()->after(function (DeleteAction $action, $record) {

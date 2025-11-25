@@ -5,11 +5,16 @@ namespace App\Filament\Widgets;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class StatsOverview extends StatsOverviewWidget
 {
+    public static function canView(): bool
+    {
+        return auth()->user()?->hasRole('super admin') ?? false;
+    }
     protected function getStats(): array
     {
         return [

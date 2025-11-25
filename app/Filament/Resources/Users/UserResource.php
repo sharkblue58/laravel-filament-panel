@@ -23,7 +23,7 @@ class UserResource extends Resource
 
     public static function canAccess(): bool
     {
-        return auth()->user()?->hasAnyRole(['user', 'super admin']) ?? false;
+        return auth()->user()?->hasAnyRole(['admin', 'super admin']) ?? false;
     }
 
     // This is the key: filter only regular "user" role records
