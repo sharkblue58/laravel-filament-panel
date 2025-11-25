@@ -45,7 +45,9 @@ class ProductsTable
                     ->icon('heroicon-o-calendar')
                     ->datetime('d/m/Y h:i A')
                     ->sortable(),
-
+                TextColumn::make('tags.name')
+                    ->label('Tags')
+                    ->badge(),
 
                 /*ImageColumn::make('image')
                     ->label('Image')

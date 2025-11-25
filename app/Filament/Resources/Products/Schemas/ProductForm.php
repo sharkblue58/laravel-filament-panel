@@ -21,11 +21,11 @@ class ProductForm
                 // Category
                 Select::make('category_id')
                     ->label('Category')
-                    ->relationship('category', 'name') 
+                    ->relationship('category', 'name')
                     ->required(),
 
                 // Image
- /*                FileUpload::make('image')
+                /*                FileUpload::make('image')
                     ->label('Product Image')
                     ->image()
                     ->disk('s3')          //need to use s3
@@ -38,6 +38,13 @@ class ProductForm
                     ->required()
                     ->numeric()
                     ->minValue(0),
+
+                Select::make('tags')
+                    ->relationship('tags', 'name')
+                    ->multiple()
+                    ->preload()     
+                    ->searchable()  
+                    ->label('Tags')
             ]);
     }
 }
