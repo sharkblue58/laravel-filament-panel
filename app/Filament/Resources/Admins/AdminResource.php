@@ -8,12 +8,13 @@ use Filament\Tables\Table;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\Admins\Pages\EditAdmin;
 use App\Filament\Resources\Admins\Pages\ListAdmins;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\Admins\Pages\CreateAdmin;
 use App\Filament\Resources\Admins\Schemas\AdminForm;
 use App\Filament\Resources\Admins\Tables\AdminsTable;
-use Illuminate\Database\Eloquent\Builder;
 
 class AdminResource extends Resource
 {
@@ -29,6 +30,14 @@ class AdminResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
+            ->whereHas('roles', fn($q) => $q->where('name', 'admin'))
+            ->whereDoesntHave('roles', fn($q) => $q->whereIn('name', ['user', 'super admin']));
+    }
+
+    public static function getRecordRouteBindingEloquentQuery(): Builder
+    {
+        return parent::getRecordRouteBindingEloquentQuery()
+            ->withoutGlobalScopes([SoftDeletingScope::class])
             ->whereHas('roles', fn($q) => $q->where('name', 'admin'))
             ->whereDoesntHave('roles', fn($q) => $q->whereIn('name', ['user', 'super admin']));
     }

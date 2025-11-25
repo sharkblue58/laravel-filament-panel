@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\Admins\Pages;
 
-use App\Filament\Resources\Admins\AdminResource;
 use Filament\Actions\DeleteAction;
+use Filament\Actions\RestoreAction;
+use Filament\Actions\ForceDeleteAction;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\Admins\AdminResource;
 
 class EditAdmin extends EditRecord
 {
@@ -14,6 +16,8 @@ class EditAdmin extends EditRecord
     {
         return [
             DeleteAction::make(),
+            ForceDeleteAction::make(),
+            RestoreAction::make(),
         ];
     }
 }

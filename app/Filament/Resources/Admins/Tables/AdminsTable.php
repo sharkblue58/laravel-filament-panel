@@ -7,15 +7,23 @@ use Filament\Tables\Table;
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Resources\Resource;
 use Filament\Actions\DeleteAction;
+use Filament\Actions\RestoreAction;
 use Illuminate\Support\Facades\Auth;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\ForceDeleteAction;
+use Filament\Actions\RestoreBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Filters\TrashedFilter;
+use Filament\Actions\ForceDeleteBulkAction;
 use STS\FilamentImpersonate\Actions\Impersonate;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AdminsTable
+class AdminsTable 
 {
     public static function configure(Table $table): Table
     {
@@ -43,7 +51,7 @@ class AdminsTable
                     ->datetime('d/m/Y h:i A'),
             ])
             ->filters([
-                //
+                TrashedFilter::make(),
             ])
             ->recordActions([
                 Impersonate::make(),
@@ -64,11 +72,16 @@ class AdminsTable
                         ])
                         ->sendToDatabase($recipient);
                 }),
+                ForceDeleteAction::make(),
+                RestoreAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ForceDeleteBulkAction::make(),
+                    RestoreBulkAction::make(),
                 ]),
             ]);
     }
+
 }
