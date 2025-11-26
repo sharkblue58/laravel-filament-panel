@@ -67,5 +67,6 @@ return [
     'settings' => 'الإعدادات',
     'setting' => 'الإعداد',
     'general_settings' => 'إعدادات عامة',
+    'shipping'=> 'الشحن',
 
 ];

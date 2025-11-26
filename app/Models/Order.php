@@ -7,11 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['customer_name', 'customer_email', 'billing_address', 'shipping_address', 'status', 'city_id', 'total'];
+    protected $fillable = [
+        'customer_name',
+        'customer_email',
+        'billing_address',
+        'shipping_address',
+        'status',
+        'city_id',
+        'shipping_id',
+        'total'
+    ];
 
     protected $casts = [
         'status' => OrderStatus::class,
     ];
+
+    public function shipping()
+    {
+        return $this->belongsTo(Shipping::class);
+    }
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);

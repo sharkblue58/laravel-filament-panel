@@ -33,6 +33,11 @@ class OrdersTable
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('shipping.name')
+                    ->label('Shipping')
+                    ->searchable()
+                    ->sortable(),
+
                 TextInputColumn::make('customer_name')
                     ->rules(['required', 'string', 'max:255'])
                     ->searchable(),

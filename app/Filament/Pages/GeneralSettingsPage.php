@@ -11,7 +11,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
-use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Contracts\HasSchemas;
 use Illuminate\Contracts\Support\Htmlable;
 use Filament\Schemas\Concerns\InteractsWithSchemas;

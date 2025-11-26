@@ -20,6 +20,10 @@ class OrderForm
                             ->relationship('city', 'name')
                             ->required(),
 
+                        Select::make('shipping_id')
+                            ->relationship('shipping', 'name')
+                            ->required(),
+
                         TextInput::make('customer_name')
                             ->required()
                             ->maxLength(255),

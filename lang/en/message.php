@@ -70,4 +70,5 @@ return [
     'setting' => 'Setting',
     'settings' => 'Settings',
     'general_settings' => 'General Settings',
+    'shipping'=> 'Shipping',
 ];

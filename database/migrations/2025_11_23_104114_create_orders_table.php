@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('shipping_id')->constrained()->cascadeOnDelete();
             $table->string('customer_name');
             $table->string('customer_email');
             $table->string('status')->default(OrderStatus::Pending->value);

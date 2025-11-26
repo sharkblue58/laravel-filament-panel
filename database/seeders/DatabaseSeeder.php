@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CountryCitySeeder::class);
         $this->call(TagSeeder::class);
         $this->call(CategorySeeder::class);
+        $this->call(ShippingSeeder::class);
 
         User::factory()->create([
             'name' => 'User',
